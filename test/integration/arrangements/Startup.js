@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/test/Opa5"],function(t){"use strict";return t.extend("ZGBC_FLEET_RETURN.ZGBC_FLEET_RETURN.test.integration.arrangements.Startup",{iStartMyApp:function(t){var a=t||{};a.delay=a.delay||50;this.iStartMyUIComponent({componentConfig:{name:"ZGBC_FLEET_RETURN.ZGBC_FLEET_RETURN",async:true},hash:a.hash,autoWait:a.autoWait})}})});
