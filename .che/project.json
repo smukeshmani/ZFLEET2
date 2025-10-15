@@ -1,0 +1,15 @@
+{
+    "type": "sap.web",
+    "builders": {
+        "configs": {}
+    },
+    "runners": {
+        "configs": {}
+    },
+    "attributes": {
+        "sap.watt.common.setting": [
+            "{\"projectType\":[\"sap.watt.uitools.ide.fiori\",\"sap.watt.uitools.ide.web\"],\"mockpreview\":{\"mockUri\":\"\",\"metadataFilePath\":\"\",\"loadJSONFiles\":false,\"loadCustomRequests\":false,\"mockRequestsFilePath\":\"\"},\"deploy\":{\"destination\":\"DEV_BRN_HEC\",\"name\":\"ZFLEET2\"},\"hcpdeploy\":{\"account\":\"ad534eb75\",\"name\":\"zfleet2\",\"lastVersionWeTriedToDeploy\":\"1.0.0\"}}"
+        ]
+    },
+    "mixinTypes": []
+}
