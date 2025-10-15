@@ -2,7 +2,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/BindingMode",
     "sap/ui/core/message/Message",
-    "sap/ui/core/ValueState",
+    "sap/ui/core/library",
     "sap/m/MessageToast",
     "sap/ui/core/library"],
     function (e, t, o, s, i, a, r, l) {
@@ -37,14 +37,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                                     o.getView().getModel("localModel").setProperty("/SumitRequestVisible", true)
                                 }, error: function () { sap.m.MessageToast.show("You are not eligible to create request") }
                             })
-                        }, error: function () { o.getView().getModel("localModel").setProperty("/SumitRequestVisible", false); sap.m.MessageToast.show("No Data retreived") }
+                        }, error: function () {
+                            o.getView().getModel("localModel").setProperty("/SumitRequestVisible", false);
+                            sap.m.MessageToast.show("No Data retreived")
+                        }
                     })
                 },
                 onSubmitRequest: function (e) {
                     var t = this.getView().byId("idVehicleId").getText();
                     if (t === "") {
                         sap.m.MessageToast.show("Unable To Submit The Request As , No Vehicle Found For the Given Employee ID");
-                        return} var o = "";
+                        return
+                    } var o = "";
                     var s = this.getView().byId("idEmpid").getValue();
                     var i = this.getView().byId("idNameEn").getText();
                     var r = this.getView().byId("idNameAr").getText();
@@ -59,10 +63,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                     var h = this.getView().byId("idEmpSubGroupDesc").getText();
                     var m = this.getView().byId("idIquama").getText();
                     var M = this.getView().byId("idDl").getValue();
-                    var b = this.getView().byId("idDl"); if (M === "") { b.setValueState(a.Error); b.setValueStateText("Driving Liesence Is Required"); return } else { b.setValueState(a.None) } var y = this.getView().getModel(); var v = this; var T = { Pernr: s, NameEn: i, NameAr: r, PositionId: l, PositionTextEn: d, PositionTextAr: u, NatioEn: "", NatioAr: "", DepartmentEn: n, DepartmentAr: c, IdNoEn: m, IdNoAr: "", Cocd: g, CocdDesc: p, Dl: M, EmpSubgroup: V, EmpSubgroupDesc: h, ReturnHeaderToItemNav: [{}] }; y.create("/FleetReturnHeaderSet", T, {
+                    var b = this.getView().byId("idDl");
+
+                    if (M === "") {
+                        b.setValueState(a.Error);
+                        b.setValueStateText("Driving Liesence Is Required");
+                        return
+                    } else { b.setValueState(a.None) }
+                    var y = this.getView().getModel(); var v = this;
+                    var T = { Pernr: s, NameEn: i, NameAr: r, PositionId: l, PositionTextEn: d, PositionTextAr: u, NatioEn: "", NatioAr: "", DepartmentEn: n, DepartmentAr: c, IdNoEn: m, IdNoAr: "", Cocd: g, CocdDesc: p, Dl: M, EmpSubgroup: V, EmpSubgroupDesc: h, ReturnHeaderToItemNav: [{}] };
+                    y.create("/FleetReturnHeaderSet", T, {
                         success: function (e, t) {
-                            if (e.Requestduplicate === "X") { o = "X"; sap.m.MessageToast.show("Duplicate Request being submitted.") } if (e.Requesterror === "X") { o = "X"; sap.m.MessageToast.show("Error while submitting request. Please Try again.") } if (o !== "X") {
-                                v.oLocalModel2.setProperty("/Response", e); v.oLocalModel2.setProperty("/Type", "Success"); v.oLocalModel2.setProperty("/Visible", true); var s = v.oLocalModel2.getProperty("/Response/RequestId");
+                            if (e.Requestduplicate === "X") { o = "X"; sap.m.MessageToast.show("Duplicate Request being submitted.") }
+                            if (e.Requesterror === "X") { o = "X"; sap.m.MessageToast.show("Error while submitting request. Please Try again.") } if (o !== "X") {
+                                v.oLocalModel2.setProperty("/Response", e);
+                                v.oLocalModel2.setProperty("/Type", "Success");
+                                v.oLocalModel2.setProperty("/Visible", true);
+                                var s = v.oLocalModel2.getProperty("/Response/RequestId");
                                 var i = "Service vehicle Return Request :" + s + " has been generated successfully";
                                 sap.m.MessageToast.show(i);
                                 v.oLocalModel2.setProperty("/Text", i);

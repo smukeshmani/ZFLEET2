@@ -5,11 +5,14 @@ sap.ui.define(
     "sap/ui/model/BindingMode",
     "sap/ui/core/message/Message",
     "sap/ui/core/MessageType",
-    "sap/ui/core/ValueState",
+    "sap/ui/core/library",
     "sap/m/MessageToast",
     "sap/ui/core/library"
    ], 
-   
+   function (coreLibrary) {
+    var ValueState = coreLibrary.ValueState; // Access ValueState from the library
+    // ... use ValueState ...
+});
    function (Controller,JSONModel, BindingMode, Message, MessageType , ValueState , MessageToast, library) {
 	"use strict";
 
