@@ -4,7 +4,7 @@
 	<Shell id="shell">
 		<App id="idAppControl">
 	    	<pages>
-			<Page title="{i18n>title}" titleAlignment = "Center">
+			<Page title="{i18n>title}" >
 				<content>
 					    <MessageStrip visible="{localModel2>/Visible}"
 							text="{localModel2>/Text}"
@@ -50,7 +50,6 @@
 									<Text text="{/DepartmentEn}" id="idDepartmentEn"></Text>
 									<Label text="Department(Arabic)"/>
 									<Text text="{/DepartmentAr}" id="idDepartmentAr"></Text>
-								  
 								    <core:Title text="" />
 								    <Label text=""/>
 								    <Text text="" id="Blank"></Text>
@@ -107,7 +106,6 @@
 							 </f:SimpleForm>
 							</VBox>
 				</content>
-				
 				<footer>
 					 <OverflowToolbar id="otbFooter">
 				     <ToolbarSpacer/>
